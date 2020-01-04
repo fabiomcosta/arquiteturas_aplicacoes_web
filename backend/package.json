@@ -1,0 +1,33 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update-schema": "node ./scripts/update-schema.js",
+    "start": "node ./src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "^14.5.8",
+    "graphql-relay": "^0.6.0",
+    "isomorphic-fetch": "^2.2.1",
+    "koa": "^2.11.0",
+    "koa-graphql": "^0.8.0",
+    "koa-router": "^7.4.0",
+    "next": "^9.1.6",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-relay": "^8.0.0",
+    "relay-runtime": "^8.0.0"
+  },
+  "devDependencies": {
+    "babel-plugin-relay": "^8.0.0",
+    "prettier": "^1.19.1",
+    "relay-compiler": "^8.0.0",
+    "relay-compiler-webpack-plugin": "^8.0.0"
+  }
+}
