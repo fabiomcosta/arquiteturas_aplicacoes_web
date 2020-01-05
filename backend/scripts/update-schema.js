@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const { printSchema } = require('graphql');
-const schema = require('../src/schema');
+import fs from 'fs';
+import path from 'path';
+import { printSchema } from 'graphql';
+import schema from '../src/schema';
 
 const schemaPath = path.resolve(__dirname, '../data/schema.graphql');
 

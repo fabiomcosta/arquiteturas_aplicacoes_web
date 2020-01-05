@@ -1,9 +1,11 @@
-const {
+import {
   graphql,
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLString
-} = require('graphql');
+} from 'graphql';
+
+import { readById } from './data';
 
 const query = new GraphQLObjectType({
   name: 'Query',
@@ -24,5 +26,4 @@ const query = new GraphQLObjectType({
   }
 });
 
-const schema = new GraphQLSchema({ query });
-module.exports = schema;
+export default new GraphQLSchema({ query });

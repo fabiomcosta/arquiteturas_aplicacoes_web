@@ -5,7 +5,7 @@
   "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "update-schema": "node ./scripts/update-schema.js",
+    "update-schema": "babel-node ./scripts/update-schema.js",
     "start": "node ./src/index.js"
   },
   "keywords": [],
@@ -25,6 +25,8 @@
     "relay-runtime": "^8.0.0"
   },
   "devDependencies": {
+    "@babel/node": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
     "babel-plugin-relay": "^8.0.0",
     "prettier": "^1.19.1",
     "relay-compiler": "^8.0.0",
