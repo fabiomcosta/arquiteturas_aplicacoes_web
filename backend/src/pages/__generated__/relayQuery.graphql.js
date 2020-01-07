@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f8fa199acb80ad2f03f2f57f83c6bc86
+ * @relayHash dd408f3aabd3027f70642926fe652ab3
  */
 
 /* eslint-disable */
@@ -9,8 +9,8 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-export type listQueryVariables = {||};
-export type listQueryResponse = {|
+export type relayQueryVariables = {||};
+export type relayQueryResponse = {|
   +viewer: ?{|
     +name: ?string
   |},
@@ -19,15 +19,15 @@ export type listQueryResponse = {|
     +name: ?string,
   |}>,
 |};
-export type listQuery = {|
-  variables: listQueryVariables,
-  response: listQueryResponse,
+export type relayQuery = {|
+  variables: relayQueryVariables,
+  response: relayQueryResponse,
 |};
 */
 
 
 /*
-query listQuery {
+query relayQuery {
   viewer {
     name
     id
@@ -71,7 +71,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "listQuery",
+    "name": "relayQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -93,7 +93,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "listQuery",
+    "name": "relayQuery",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -114,13 +114,13 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "listQuery",
+    "name": "relayQuery",
     "id": null,
-    "text": "query listQuery {\n  viewer {\n    name\n    id\n  }\n  allCustomers {\n    id\n    name\n  }\n}\n",
+    "text": "query relayQuery {\n  viewer {\n    name\n    id\n  }\n  allCustomers {\n    id\n    name\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '253faa592e579137abd6ad761fa03a07';
+(node/*: any*/).hash = 'fee117354271cef72385f2b011c0d2d3';
 module.exports = node;

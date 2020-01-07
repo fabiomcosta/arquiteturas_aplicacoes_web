@@ -1,13 +1,14 @@
 import React from 'react';
 import { graphql, QueryRenderer } from 'react-relay';
 import environment from '../environment';
+import ListCustomers from '../components/ListCustomers';
 
 export default () => {
   return (
     <QueryRenderer
       environment={environment}
       query={graphql`
-        query listQuery {
+        query relayQuery {
           viewer {
             name
           }
@@ -29,13 +30,7 @@ export default () => {
           <>
             <h1>Viewer</h1>
             <div>{props.viewer.name}</div>
-            <h1>Customers</h1>
-            {props.allCustomers.map(customer => (
-              <div key={customer.idt}>
-                <strong>name: </strong>
-                {customer.name}
-              </div>
-            ))}
+            <ListCustomers customers={props.allCustomers} />
           </>
         );
       }}
