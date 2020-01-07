@@ -1,5 +1,91 @@
+"""
+A customer from Cloudia, generally represented by either a person or a company.
+"""
+type Customer implements Node {
+  """The ID of an object"""
+  id: ID!
+
+  """The name of the customer."""
+  name: String
+
+  """The physical locations owned by this customer."""
+  locations(after: String, first: Int, before: String, last: Int): LocationConnection
+}
+
+"""A physical location owned by customers."""
+type Location implements Node {
+  """The ID of an object"""
+  id: ID!
+
+  """The name of the location."""
+  name: String
+
+  """The address of the location."""
+  address: String
+}
+
+"""A connection to a list of items."""
+type LocationConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [LocationEdge]
+}
+
+"""An edge in a connection."""
+type LocationEdge {
+  """The item at the end of the edge"""
+  node: Location
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
 """The root of all queries."""
 type Query {
-  hello: String
-  hello2: String
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """The user that is currently viewing the page."""
+  viewer: User
+
+  """All the customers."""
+  allCustomers: [Customer]
+
+  """All the users."""
+  allUsers: [User]
+}
+
+"""A user from the admin system."""
+type User implements Node {
+  """The ID of an object"""
+  id: ID!
+
+  """The name of the user."""
+  name: String
 }

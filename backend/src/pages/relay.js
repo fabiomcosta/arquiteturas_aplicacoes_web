@@ -8,7 +8,13 @@ export default () => {
       environment={environment}
       query={graphql`
         query listQuery {
-          hello
+          viewer {
+            name
+          }
+          allCustomers {
+            id
+            name
+          }
         }
       `}
       variables={{}}
@@ -19,7 +25,19 @@ export default () => {
         if (!props) {
           return <div>Loading...</div>;
         }
-        return <div>User ID: {props.hello}</div>;
+        return (
+          <>
+            <h1>Viewer</h1>
+            <div>{props.viewer.name}</div>
+            <h1>Customers</h1>
+            {props.allCustomers.map(customer => (
+              <div key={customer.idt}>
+                <strong>name: </strong>
+                {customer.name}
+              </div>
+            ))}
+          </>
+        );
       }}
     />
   );

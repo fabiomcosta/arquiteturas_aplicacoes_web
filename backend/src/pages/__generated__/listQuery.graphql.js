@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash fa55cc7d9b9992999256321be0d5fefe
+ * @relayHash f8fa199acb80ad2f03f2f57f83c6bc86
  */
 
 /* eslint-disable */
@@ -11,7 +11,13 @@
 import type { ConcreteRequest } from 'relay-runtime';
 export type listQueryVariables = {||};
 export type listQueryResponse = {|
-  +hello: ?string
+  +viewer: ?{|
+    +name: ?string
+  |},
+  +allCustomers: ?$ReadOnlyArray<?{|
+    +id: string,
+    +name: ?string,
+  |}>,
 |};
 export type listQuery = {|
   variables: listQueryVariables,
@@ -22,20 +28,45 @@ export type listQuery = {|
 
 /*
 query listQuery {
-  hello
+  viewer {
+    name
+    id
+  }
+  allCustomers {
+    id
+    name
+  }
 }
 */
 
 const node/*: ConcreteRequest*/ = (function(){
-var v0 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "hello",
-    "args": null,
-    "storageKey": null
-  }
-];
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "allCustomers",
+  "storageKey": null,
+  "args": null,
+  "concreteType": "Customer",
+  "plural": true,
+  "selections": [
+    (v1/*: any*/),
+    (v0/*: any*/)
+  ]
+};
 return {
   "kind": "Request",
   "fragment": {
@@ -44,23 +75,52 @@ return {
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
-    "selections": (v0/*: any*/)
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "viewer",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "User",
+        "plural": false,
+        "selections": [
+          (v0/*: any*/)
+        ]
+      },
+      (v2/*: any*/)
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "listQuery",
     "argumentDefinitions": [],
-    "selections": (v0/*: any*/)
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "viewer",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "User",
+        "plural": false,
+        "selections": [
+          (v0/*: any*/),
+          (v1/*: any*/)
+        ]
+      },
+      (v2/*: any*/)
+    ]
   },
   "params": {
     "operationKind": "query",
     "name": "listQuery",
     "id": null,
-    "text": "query listQuery {\n  hello\n}\n",
+    "text": "query listQuery {\n  viewer {\n    name\n    id\n  }\n  allCustomers {\n    id\n    name\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '486ca2d3eabfb5df1b00703597a6b39a';
+(node/*: any*/).hash = '253faa592e579137abd6ad761fa03a07';
 module.exports = node;
