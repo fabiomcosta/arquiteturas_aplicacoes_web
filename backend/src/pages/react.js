@@ -2,10 +2,9 @@ import React from 'react';
 
 export default () => {
   return (
-    <>
-      <h1>Viewer</h1>
-      <div>{props.viewer.name}</div>
+    <div>
+      <Viewer viewer={props.viewer} />
       <ListCustomers customers={props.allCustomers} />
-    </>
+    </div>
   );
 };

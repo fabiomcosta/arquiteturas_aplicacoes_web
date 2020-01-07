@@ -18,7 +18,6 @@ export default () => {
           }
         }
       `}
-      variables={{}}
       render={({ error, props }) => {
         if (error) {
           return <div>Error!</div>;
@@ -27,11 +26,10 @@ export default () => {
           return <div>Loading...</div>;
         }
         return (
-          <>
-            <h1>Viewer</h1>
-            <div>{props.viewer.name}</div>
+          <div>
+            <Viewer viewer={props.viewer} />
             <ListCustomers customers={props.allCustomers} />
-          </>
+          </div>
         );
       }}
     />
