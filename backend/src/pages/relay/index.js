@@ -1,8 +1,8 @@
 import React from 'react';
 import { graphql, QueryRenderer } from 'react-relay';
-import environment from '../relay/environment';
-import ListCustomers from '../components/ListCustomers';
-import Viewer from '../components/Viewer';
+import environment from '../../relay/environment';
+import ListCustomers from '../../components/ListCustomers';
+import Viewer from '../../components/Viewer';
 
 export default () => {
   return (

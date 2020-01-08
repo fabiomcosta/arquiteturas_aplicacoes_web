@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ListCustomers from '../components/ListCustomers';
-import Viewer from '../components/Viewer';
+import ListCustomers from '../../components/ListCustomers';
+import Viewer from '../../components/Viewer';
 
 function ReduxApp(props) {
   return (
