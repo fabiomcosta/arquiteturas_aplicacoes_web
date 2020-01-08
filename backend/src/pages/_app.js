@@ -15,7 +15,9 @@ function reducer(state = initialState, action) {
   }
 }
 
-function App({ Component, pageProps, store }) {
+function App(props) {
+  const { Component, pageProps, store } = props;
+  console.log(props);
   return (
     <Provider store={store}>
       <Component {...pageProps} />
