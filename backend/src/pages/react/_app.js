@@ -1,15 +1,15 @@
-import React from 'react';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+import React, { useReducer } from 'react';
 import { fetchQuery } from '../../utils';
-import { reducer } from '../../react';
+import { DispatchContext, StateContext, reducer } from '../../react';
 
 function App({ Component, pageProps, initialState }) {
-  const store = createStore(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <Provider store={store}>
-      <Component {...pageProps} />
-    </Provider>
+    <DispatchContext.Provider value={dispatch}>
+      <StateContext.Provider value={state}>
+        <Component {...pageProps} />
+      </StateContext.Provider>
+    </DispatchContext.Provider>
   );
 }
 
