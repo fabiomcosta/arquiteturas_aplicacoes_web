@@ -29,7 +29,8 @@ import {
   getLocation,
   getUser,
   getAllCustomers,
-  getAllUsers
+  getAllUsers,
+  getAllLocations
 } from './data';
 
 /**
@@ -145,6 +146,12 @@ const allCustomersField = {
   resolve: getAllCustomers
 };
 
+const allLocationsField = {
+  type: new GraphQLList(LocationType),
+  description: 'All the locations.',
+  resolve: getAllLocations
+};
+
 const query = new GraphQLObjectType({
   name: 'Query',
   description: 'The root of all queries.',
@@ -152,7 +159,8 @@ const query = new GraphQLObjectType({
     node: nodeField,
     viewer: viewerField,
     allCustomers: allCustomersField,
-    allUsers: allUsersField
+    allUsers: allUsersField,
+    allLocations: allLocationsField
   }
 });
 

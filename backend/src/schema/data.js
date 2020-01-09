@@ -94,3 +94,6 @@ export async function getAllUsers() {
   return Object.values(data.User);
 }
 
+export async function getAllLocations() {
+  return Object.values(data.Location);
+}

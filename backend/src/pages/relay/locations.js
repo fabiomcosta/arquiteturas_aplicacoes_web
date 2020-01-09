@@ -1,31 +1,31 @@
 import React from 'react';
 import { graphql, QueryRenderer } from 'react-relay';
 import Link from 'next/link';
-import ListCustomers from '../../components/ListCustomers';
+import ListLocations from '../../components/ListLocations';
 import Viewer from '../../components/Viewer';
 
-function RelayApp(props) {
+function Locations(props) {
   return (
     <div>
-      <Link href='/relay/locations'>
-        <a>Locations</a>
+      <Link href='/relay'>
+        <a>Index</a>
       </Link>
       <Viewer viewer={props.viewer} />
-      <ListCustomers customers={props.allCustomers} />
+      <ListLocations locations={props.allLocations} />
     </div>
   );
 }
 
-RelayApp.query = graphql`
-  query relayQuery {
+Locations.query = graphql`
+  query locationsQuery {
     viewer {
       name
     }
-    allCustomers {
+    allLocations {
       id
       name
     }
   }
 `;
 
-export default RelayApp;
+export default Locations;

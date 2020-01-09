@@ -79,6 +79,9 @@ type Query {
 
   """All the users."""
   allUsers: [User]
+
+  """All the locations."""
+  allLocations: [Location]
 }
 
 """A user from the admin system."""
