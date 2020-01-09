@@ -6,7 +6,7 @@ function App({ Component, variables = {}, relayData }) {
   const environment = createEnvironment(
     relayData,
     JSON.stringify({
-      queryID: Component.query ? Component.query().params.name : undefined,
+      queryID: Component.query ? Component.query.params.name : undefined,
       variables
     })
   );
@@ -31,6 +31,7 @@ App.getInitialProps = async ({ Component, router, ctx }) => {
 
   try {
     if (initEnvironment && Component.query) {
+      console.log(Component.query);
       const { environment, relaySSR } = initEnvironment();
       await fetchQuery(environment, Component.query, variables);
       return {

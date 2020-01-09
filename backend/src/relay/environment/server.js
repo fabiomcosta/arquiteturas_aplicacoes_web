@@ -4,6 +4,7 @@ import {
 } from 'react-relay-network-modern/node8';
 import RelaySSR from 'react-relay-network-modern-ssr/node8/server';
 import { Network, Environment, RecordSource, Store } from 'relay-runtime';
+import { GRAPHQL_URL } from '../../config';
 
 export default {
   initEnvironment() {
@@ -16,7 +17,7 @@ export default {
         store,
         network: new RelayNetworkLayer([
           urlMiddleware({
-            url: () => process.env.RELAY_ENDPOINT
+            url: () => GRAPHQL_URL
           }),
           relaySSR.getMiddleware()
         ])

@@ -5,9 +5,9 @@ import next from 'next';
 
 import graphQLSchema from './schema';
 import { getUser } from './schema/data';
+import { PORT, ORIGIN, GRAPHQL_URL, GRAPHQL_PATH } from './config';
 
 const IS_DEV = process.env.NODE_ENV !== 'production';
-const PORT = Number(process.env.PORT) || 4000;
 
 const app = next({ dev: IS_DEV });
 const handle = app.getRequestHandler();
@@ -22,7 +22,7 @@ app.prepare().then(() => {
   const server = new Koa();
   const router = new Router();
 
-  router.all('/graphql', async ctx => {
+  router.all(GRAPHQL_PATH, async ctx => {
     const { request, response } = ctx;
     const token = request.headers.authorization || '';
     const viewer = await getViewerFromToken(token);
@@ -47,7 +47,7 @@ app.prepare().then(() => {
   server.use(router.allowedMethods());
 
   server.listen(PORT, () => {
-    console.log(`> Ready on http://localhost:${PORT}`);
-    console.log(`> Graphiql is available on http://localhost:${PORT}/graphql`);
+    console.log(`> Ready on ${ORIGIN}`);
+    console.log(`> Graphiql is available on ${GRAPHQL_URL}`);
   });
 });
