@@ -1,11 +1,11 @@
 import React from 'react';
 import { createStore } from 'redux';
+import withRedux from 'next-redux-wrapper';
 import { Provider } from 'react-redux';
 import { fetchQuery } from '../../utils';
 import { reducer } from '../../react';
 
-function App({ Component, pageProps, initialState }) {
-  const store = createStore(reducer, initialState);
+function App({ Component, pageProps, store }) {
   return (
     <Provider store={store}>
       <Component {...pageProps} />
@@ -16,25 +16,17 @@ function App({ Component, pageProps, initialState }) {
 App.getInitialProps = async ({ Component, ctx }) => {
   const pageProps = Component.getInitialProps
     ? await Component.getInitialProps(ctx)
-    : {};
+    : null;
   const pageLoadData = await fetchQuery({
-    text: `
-    query {
-      viewer {
-        name
-      }
-      allCustomers {
-        id
-        name
-      }
-      allLocations {
-        id
-        name
-      }
-    }
-  `
+    text: Component.query
   });
-  return { pageProps, initialState: pageLoadData.data };
+  const initialState = pageLoadData.data;
+  ctx.store.dispatch({ type: 'HYDRATE', payload: initialState });
+  return { pageProps };
 };
 
-export default App;
+const makeStore = (initialState, options) => {
+  return createStore(reducer, initialState);
+};
+
+export default withRedux(makeStore)(App);

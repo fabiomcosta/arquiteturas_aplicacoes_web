@@ -1,13 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Link from 'next/link';
+import { connect } from '../../react';
 import ListLocations from '../../components/ListLocations';
 import Viewer from '../../components/Viewer';
 
 function Locations(props) {
   return (
     <div>
-      <Link href='/redux'>
+      <Link href='/react'>
         <a>Index</a>
       </Link>
       <Viewer viewer={props.viewer} />

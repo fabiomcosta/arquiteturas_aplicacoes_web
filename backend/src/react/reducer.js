@@ -1,8 +1,6 @@
-const initialState = {};
-
-export function reducer(state = initialState, action) {
+export function reducer(state, action) {
   switch (action.type) {
-    case 'INIT':
+    case 'HYDRATE':
       return { ...state, ...action.payload };
     default:
       return state;

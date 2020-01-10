@@ -16,6 +16,18 @@ function ReduxApp(props) {
   );
 }
 
+ReduxApp.query = `
+  query {
+    viewer {
+      name
+    }
+    allCustomers {
+      id
+      name
+    }
+  }
+`;
+
 function mapStateToProps(state) {
   return {
     viewer: state.viewer,
