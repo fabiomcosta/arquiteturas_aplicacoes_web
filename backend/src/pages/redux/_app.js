@@ -14,6 +14,9 @@ function App({ Component, pageProps, initialState }) {
 }
 
 App.getInitialProps = async ({ Component, ctx }) => {
+  const pageProps = Component.getInitialProps
+    ? await Component.getInitialProps(ctx)
+    : {};
   const pageLoadData = await fetchQuery({
     text: `
     query {
@@ -24,12 +27,13 @@ App.getInitialProps = async ({ Component, ctx }) => {
         id
         name
       }
+      allLocations {
+        id
+        name
+      }
     }
   `
   });
-  const pageProps = Component.getInitialProps
-    ? await Component.getInitialProps(ctx)
-    : {};
   return { pageProps, initialState: pageLoadData.data };
 };
 
