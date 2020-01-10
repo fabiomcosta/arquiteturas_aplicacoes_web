@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, QueryRenderer } from 'react-relay';
+import { connect } from 'react-redux';
 import Link from 'next/link';
 import ListLocations from '../../components/ListLocations';
 import Viewer from '../../components/Viewer';
@@ -7,7 +7,7 @@ import Viewer from '../../components/Viewer';
 function Locations(props) {
   return (
     <div>
-      <Link href='/relay'>
+      <Link href='/redux'>
         <a>Index</a>
       </Link>
       <Viewer viewer={props.viewer} />
@@ -23,4 +23,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default Locations;
+export default connect(mapStateToProps)(Locations);
