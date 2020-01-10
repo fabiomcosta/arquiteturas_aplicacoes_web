@@ -31,7 +31,6 @@ App.getInitialProps = async ({ Component, router, ctx }) => {
 
   try {
     if (initEnvironment && Component.query) {
-      console.log(Component.query);
       const { environment, relaySSR } = initEnvironment();
       await fetchQuery(environment, Component.query, variables);
       return {

@@ -158,6 +158,7 @@ const query = new GraphQLObjectType({
   fields: {
     node: nodeField,
     viewer: viewerField,
+    // /api/customers
     allCustomers: allCustomersField,
     allUsers: allUsersField,
     allLocations: allLocationsField

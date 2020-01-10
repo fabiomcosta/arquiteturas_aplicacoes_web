@@ -22,6 +22,7 @@ app.prepare().then(() => {
   const server = new Koa();
   const router = new Router();
 
+  //'/graphql'
   router.all(GRAPHQL_PATH, async ctx => {
     const { request, response } = ctx;
     const token = request.headers.authorization || '';

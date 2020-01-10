@@ -1,0 +1,199 @@
+<!doctype html>
+<html class="o">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>CSS-in-JS using Linaria</title>
+
+    <link rel="icon" href="./other/assets/favicon.png"/>
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/night.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+    <style>
+
+.o ::selection, .o .reveal .progress span {
+  background-color: #E22468;
+}
+.o .reveal a {
+  color: #E22468;
+}
+.o :focus {
+  outline: #E22468 auto 5px;
+}
+.o .reveal .controls .navigate-up {
+  border-bottom-color: #E22468;
+}
+.o .reveal .controls .navigate-right {
+  border-left-color: #E22468;
+}
+.o .reveal .controls .navigate-down {
+  border-top-color: #E22468;
+}
+.o .reveal .controls .navigate-left {
+  border-right-color: #E22468;
+}
+
+.o .inline-image {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background-color: #eee;
+  border-radius: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 5px;
+  margin-right: 5px;
+  border: 4px solid #a23;
+  padding: 2px;
+}
+.o .text-over-bg {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 5px;
+}
+.o .linaria-logo-inline {
+  height: 110px;
+  vertical-align: -35px;
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  margin: 0;
+}
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h3>Arquiteturas de applicacoes web usando React</h3>
+        </section>
+
+        <section>
+          <h3>/me</h3>
+          <ul>
+            <li>Fabio Miranda Costa</li>
+            <li>twitter.com/fabiomiranda</li>
+            <li>github.com/fabiomcosta</li>
+            <li>facebook.com/fabs</li>
+            <li>fabiomcosta@gmail.com</li>
+          </ul>
+          <img src="./other/assets/filhos.gif" style="width:240px;margin: 40px auto;display: block"/>
+        </section>
+
+        <section>
+          <h3>Por favor me interrompa!</h3>
+        </section>
+
+        <section>
+          <h3>Backend</h3>
+          <ul>
+            <li>Koa (ou Express)</li>
+            <li>NextJS</li>
+            <li>GraphQL</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Arquitetura</h3>
+          <img src="./other/assets/arch_diagram.svg" style="background:white"/>
+        </section>
+
+        <section>
+          <h3>Koa</h3>
+          <ul>
+            <li>Framework de servidor para ajudar na criacao de APIs</li>
+            <li>Alternativa mais moderna ao Express</li>
+            <li><a href="https://koajs.com/">https://koajs.com/</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>NextJS</h3>
+          <ul>
+            <li>Framework de React</li>
+            <li>Server-side rendering (renderizacao de componentes React no servidor)</li>
+            <li>Roteamento</li>
+            <li>Code splitting</li>
+            <li><a href="https://nextjs.org/">https://nextjs.org/</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>GraphQL</h3>
+          <ul>
+            <li>GraphQL eh uma query language que possibilita a criação de APIs onde quem faz a requisição (cliente) decide quais informações quer.</li>
+            <li><a href="http://localhost:4000/graphql?query=%7B%0A%20%20viewer%20%7B%0A%20%20%20%20id%0A%20%20%20%20name%0A%20%20%0A%20%20%7D%0A%20%20allCustomers%20%7B%0A%20%20%20%20id%0A%20%20%20%20name%0A%20%20%20%20locations%20%7B%0A%20%20%20%20%20%20edges%20%7B%0A%20%20%20%20%20%20%20%20node%20%7B%0A%20%20%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%20%20allLocations%20%7B%0A%20%20%20%20id%0A%20%20%20%20name%0A%20%20%20%20address%0A%20%20%7D%0A%7D%0A">http://localhost:4000/graphql</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Frontend</h3>
+          <ul>
+            <li>React + Hooks</li>
+            <li>Redux</li>
+            <li>Relay</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>React + Hooks e Redux</h3>
+          <ul>
+            <li>Flexiveis</li>
+            <li>Facil de usar</li>
+            <li>Funcionam com qualquer backend</li>
+            <li>Requerem solucao de terceiros para network e cache de dados</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Relay</h3>
+          <ul>
+            <li>Requer backend com suporte a GraphQL</li>
+            <li>Complexo (connections, mutations, fragments ...)</li>
+            <li>Dificil de iniciar, porem muito produtivo apos curva de aprendizado inicial</li>
+            <li>Prove network e cache de dados</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Obrigado!</h3>
+          <ul>
+            <li>twitter.com/fabiomiranda</li>
+            <li>github.com/fabiomcosta</li>
+            <li>facebook.com/fabs</li>
+            <li>fabiomcosta@gmail.com</li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
+</html>
