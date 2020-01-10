@@ -29,7 +29,6 @@ ReactApp.query = `
 `;
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     viewer: state.viewer,
     allCustomers: state.allCustomers

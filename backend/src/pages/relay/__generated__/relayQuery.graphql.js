@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash dd408f3aabd3027f70642926fe652ab3
+ * @relayHash 1378428bd3c6aa6c69997567c5a7c344
  */
 
 /* eslint-disable */
@@ -9,14 +9,15 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
+type ListCustomers_customers$ref = any;
+type Viewer_viewer$ref = any;
 export type relayQueryVariables = {||};
 export type relayQueryResponse = {|
   +viewer: ?{|
-    +name: ?string
+    +$fragmentRefs: Viewer_viewer$ref
   |},
   +allCustomers: ?$ReadOnlyArray<?{|
-    +id: string,
-    +name: ?string,
+    +$fragmentRefs: ListCustomers_customers$ref
   |}>,
 |};
 export type relayQuery = {|
@@ -29,13 +30,22 @@ export type relayQuery = {|
 /*
 query relayQuery {
   viewer {
-    name
+    ...Viewer_viewer
     id
   }
   allCustomers {
+    ...ListCustomers_customers
     id
-    name
   }
+}
+
+fragment ListCustomers_customers on Customer {
+  id
+  name
+}
+
+fragment Viewer_viewer on User {
+  name
 }
 */
 
@@ -53,19 +63,6 @@ v1 = {
   "name": "id",
   "args": null,
   "storageKey": null
-},
-v2 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "allCustomers",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "Customer",
-  "plural": true,
-  "selections": [
-    (v1/*: any*/),
-    (v0/*: any*/)
-  ]
 };
 return {
   "kind": "Request",
@@ -85,10 +82,29 @@ return {
         "concreteType": "User",
         "plural": false,
         "selections": [
-          (v0/*: any*/)
+          {
+            "kind": "FragmentSpread",
+            "name": "Viewer_viewer",
+            "args": null
+          }
         ]
       },
-      (v2/*: any*/)
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "allCustomers",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Customer",
+        "plural": true,
+        "selections": [
+          {
+            "kind": "FragmentSpread",
+            "name": "ListCustomers_customers",
+            "args": null
+          }
+        ]
+      }
     ]
   },
   "operation": {
@@ -109,18 +125,30 @@ return {
           (v1/*: any*/)
         ]
       },
-      (v2/*: any*/)
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "allCustomers",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Customer",
+        "plural": true,
+        "selections": [
+          (v1/*: any*/),
+          (v0/*: any*/)
+        ]
+      }
     ]
   },
   "params": {
     "operationKind": "query",
     "name": "relayQuery",
     "id": null,
-    "text": "query relayQuery {\n  viewer {\n    name\n    id\n  }\n  allCustomers {\n    id\n    name\n  }\n}\n",
+    "text": "query relayQuery {\n  viewer {\n    ...Viewer_viewer\n    id\n  }\n  allCustomers {\n    ...ListCustomers_customers\n    id\n  }\n}\n\nfragment ListCustomers_customers on Customer {\n  id\n  name\n}\n\nfragment Viewer_viewer on User {\n  name\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'fee117354271cef72385f2b011c0d2d3';
+(node/*: any*/).hash = '18e5570019da7fd95dbe3b2c8ff58a20';
 module.exports = node;

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash e4521fd022a120e42ffb07799c20672e
+ * @relayHash 91489737ac6999d865f744bb1c015e9e
  */
 
 /* eslint-disable */
@@ -9,14 +9,15 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
+type ListLocations_locations$ref = any;
+type Viewer_viewer$ref = any;
 export type locationsQueryVariables = {||};
 export type locationsQueryResponse = {|
   +viewer: ?{|
-    +name: ?string
+    +$fragmentRefs: Viewer_viewer$ref
   |},
   +allLocations: ?$ReadOnlyArray<?{|
-    +id: string,
-    +name: ?string,
+    +$fragmentRefs: ListLocations_locations$ref
   |}>,
 |};
 export type locationsQuery = {|
@@ -29,13 +30,22 @@ export type locationsQuery = {|
 /*
 query locationsQuery {
   viewer {
-    name
+    ...Viewer_viewer
     id
   }
   allLocations {
+    ...ListLocations_locations
     id
-    name
   }
+}
+
+fragment ListLocations_locations on Location {
+  id
+  name
+}
+
+fragment Viewer_viewer on User {
+  name
 }
 */
 
@@ -53,19 +63,6 @@ v1 = {
   "name": "id",
   "args": null,
   "storageKey": null
-},
-v2 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "allLocations",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "Location",
-  "plural": true,
-  "selections": [
-    (v1/*: any*/),
-    (v0/*: any*/)
-  ]
 };
 return {
   "kind": "Request",
@@ -85,10 +82,29 @@ return {
         "concreteType": "User",
         "plural": false,
         "selections": [
-          (v0/*: any*/)
+          {
+            "kind": "FragmentSpread",
+            "name": "Viewer_viewer",
+            "args": null
+          }
         ]
       },
-      (v2/*: any*/)
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "allLocations",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Location",
+        "plural": true,
+        "selections": [
+          {
+            "kind": "FragmentSpread",
+            "name": "ListLocations_locations",
+            "args": null
+          }
+        ]
+      }
     ]
   },
   "operation": {
@@ -109,18 +125,30 @@ return {
           (v1/*: any*/)
         ]
       },
-      (v2/*: any*/)
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "allLocations",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Location",
+        "plural": true,
+        "selections": [
+          (v1/*: any*/),
+          (v0/*: any*/)
+        ]
+      }
     ]
   },
   "params": {
     "operationKind": "query",
     "name": "locationsQuery",
     "id": null,
-    "text": "query locationsQuery {\n  viewer {\n    name\n    id\n  }\n  allLocations {\n    id\n    name\n  }\n}\n",
+    "text": "query locationsQuery {\n  viewer {\n    ...Viewer_viewer\n    id\n  }\n  allLocations {\n    ...ListLocations_locations\n    id\n  }\n}\n\nfragment ListLocations_locations on Location {\n  id\n  name\n}\n\nfragment Viewer_viewer on User {\n  name\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '031de317dd2aeb58996a4e1adf32d96b';
+(node/*: any*/).hash = '670a2b9058bf93441c9511e274e8fda5';
 module.exports = node;

@@ -1,8 +1,8 @@
 import React from 'react';
-import { graphql, QueryRenderer } from 'react-relay';
+import { graphql } from 'react-relay';
 import Link from 'next/link';
-import ListCustomers from '../../components/ListCustomers';
-import Viewer from '../../components/Viewer';
+import ListCustomers from '../../relay/ListCustomers';
+import Viewer from '../../relay/Viewer';
 
 function RelayApp(props) {
   return (
@@ -19,11 +19,10 @@ function RelayApp(props) {
 RelayApp.query = graphql`
   query relayQuery {
     viewer {
-      name
+      ...Viewer_viewer
     }
     allCustomers {
-      id
-      name
+      ...ListCustomers_customers
     }
   }
 `;

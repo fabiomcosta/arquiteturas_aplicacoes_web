@@ -1,8 +1,8 @@
 import React from 'react';
-import { graphql, QueryRenderer } from 'react-relay';
+import { graphql } from 'react-relay';
 import Link from 'next/link';
-import ListLocations from '../../components/ListLocations';
-import Viewer from '../../components/Viewer';
+import ListLocations from '../../relay/ListLocations';
+import Viewer from '../../relay/Viewer';
 
 function Locations(props) {
   return (
@@ -19,11 +19,10 @@ function Locations(props) {
 Locations.query = graphql`
   query locationsQuery {
     viewer {
-      name
+      ...Viewer_viewer
     }
     allLocations {
-      id
-      name
+      ...ListLocations_locations
     }
   }
 `;
